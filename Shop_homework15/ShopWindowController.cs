@@ -5,16 +5,16 @@ using System.Collections.Generic;
 
 namespace Shop_homework15
 {
-    class ShopWindowController : IShopWindowController
+    public class ShopWindowController : IShopWindowController
     {
         //все продукты на витринах
-        List<ShopWindowProduct> _shopWindowProducts;
+        private List<ShopWindowProduct> _shopWindowProducts;
 
         //список витрин
-        List<ShopWindow> _shopWindows;
+        private List<ShopWindow> _shopWindows;
 
         //список продуктов
-        List<Product> _products;
+        private List<Product> _products;
 
         public ShopWindowController()
         {
