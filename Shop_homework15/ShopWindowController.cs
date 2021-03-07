@@ -8,8 +8,14 @@ namespace Shop_homework15
 {
     class ShopWindowController : IShopWindowController
     {
-        //все витрины и продукты
+        //все продукты на витринах
         List<ShopWindowProduct> _shopWindowProducts;
+
+        //список витрин
+        List<ShopWindow> _shopWindows;
+
+        //список продуктов
+        List<Product> _products;
 
         public ShopWindowController()
         {
@@ -31,17 +37,12 @@ namespace Shop_homework15
             #region Проверка. Помещается ли товар на витрину
             //1. нужно найти общую сумму находящихся на витрине продуктов
             // ShopWindowProduct.ProductQuantity по shopWindow.ID
-            int totalShopWindowQuantity = 0;
-            foreach (var shopWindowProduct in _shopWindowProducts)
-            {
-                if (shopWindowProduct.ShopWindowID == shopWindow.ID)
-                    totalShopWindowQuantity += shopWindowProduct.ProductQuantity;
-            }
+            int occupiedQuantity = GetOccupiedQuantity(shopWindow.ID);
 
             //2. сумма из п.1  и productQuantity не должна превышать shopWindow.Capacity
             //Вопрос: здесь надо выбрасывать exception и в последствии эту ошибку обработать ( как в методе CreateShopWindow ) ? 
             //или просто пометить что проверка не прошла и вернуть false
-            if (totalShopWindowQuantity + productQuantity > shopWindow.Capacity)
+            if (occupiedQuantity + productQuantity > shopWindow.Capacity)
                 isValid = false;
 
             #endregion
@@ -63,6 +64,19 @@ namespace Shop_homework15
             return true;
         }
 
+        /*Занятое место в витрине*/
+        private int GetOccupiedQuantity(Guid shopWindowID)
+        {
+            int totalShopWindowQuantity = 0;
+            foreach (var shopWindowProduct in _shopWindowProducts)
+            {
+                if (shopWindowProduct.ShopWindowID == shopWindowID)
+                    totalShopWindowQuantity += shopWindowProduct.ProductQuantity;
+            }
+
+            return totalShopWindowQuantity;
+        }
+
         /*
          Создать новую витрину с названием и объемом. Объем - сколько товаров может поместиться, у каждого товара свой объем.
          */
@@ -76,31 +90,79 @@ namespace Shop_homework15
             //Проверка на capacity > 0
             isValid = isValid && capacity > 0;
 
+            //TODO: ещё можно добавить проверку на наличие витрины в списке, только это пока ненужно
+
             if (isValid == false)
                 throw new Exception("Ошибка создания витрины.");
 
-            return new ShopWindow()
+            var newShopWindow = new ShopWindow()
             {
                 ID = Guid.NewGuid(),
                 Name = name,
                 Capacity = capacity,
                 CreateDate = DateTime.Now
             };
+
+            _shopWindows.Add(newShopWindow);
+
+            return newShopWindow;
         }
 
-        public bool DeleteShopWindow(ShopWindowController shopWindow)
-        {
-            throw new NotImplementedException();
-        }
-
+        /*
+         Удалить витрину. Если товары расположены на витрине, то программа не позволять это сделать и сообщать ошибку.
+        */
         public bool DeleteShopWindow(ShopWindow shopWindow)
         {
-            throw new NotImplementedException();
+            //Если найден товар на витрине то не разрешать удалять
+            foreach (var shopWindowProduct in _shopWindowProducts)
+            {
+                if (shopWindowProduct.ShopWindowID == shopWindow.ID)
+                    return false;
+            }
+
+            //удалить из списка витрин 
+            //TODO: или пометить удалённым?
+            _shopWindows.Remove(shopWindow);
+
+            return true;
         }
 
-        public ShopWindow EditShopWindow(int id, string name, int capacity)
+        /*
+         Отредактировать витрину. 
+         При смене объема, если товары уже расположены на витрине
+         и их суммарный объем больше нового значения объема витрины, 
+         программа не позволять это сделать и сообщать ошибку.
+        */
+        public bool EditShopWindow(Guid id, string name, int capacity)
         {
-            throw new NotImplementedException();
+            bool isValid = true;
+            // Проверка на не пустую строку name
+            if (string.IsNullOrWhiteSpace(name))
+                isValid = false;
+
+            // Проверка на capacity > 0
+            isValid = isValid && capacity > 0;
+
+            // Проверка суммарного объема витрины
+            int occupiedQuantity = GetOccupiedQuantity(id);
+            isValid = isValid && occupiedQuantity > capacity;
+
+            if (isValid == false)
+                return false;
+
+            //найти витрину и отредактировать её имя и объем
+            foreach (var shopWindow in _shopWindows)
+            {
+                if ( shopWindow.ID == id )
+                {
+                    shopWindow.Name = name;
+                    shopWindow.Capacity = capacity;
+                    //Только первая найденная витрина
+                    break; 
+                }
+            }
+
+            return true;
         }
     }
 }
