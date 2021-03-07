@@ -1,4 +1,5 @@
-﻿using Shop_homework15.Models;
+﻿using Shop_homework15.Interfaces;
+using Shop_homework15.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +8,7 @@ namespace Shop_homework15
 {
     class ShopWindowController : IShopWindowController
     {
+        //все витрины и продукты
         List<ShopWindowProduct> _shopWindowProducts;
 
         public ShopWindowController()
