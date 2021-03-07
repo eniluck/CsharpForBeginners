@@ -20,6 +20,8 @@ namespace Shop_homework15
         public ShopWindowController()
         {
             _shopWindowProducts = new List<ShopWindowProduct>();
+            _shopWindows = new List<ShopWindow>();
+            _products = new List<Product>();
         }
 
         /*
@@ -77,6 +79,11 @@ namespace Shop_homework15
             return totalShopWindowQuantity;
         }
 
+        internal List<ShopWindow> GetShopWindows()
+        {
+            return _shopWindows;
+        }
+
         /*
          Создать новую витрину с названием и объемом. Объем - сколько товаров может поместиться, у каждого товара свой объем.
          */
@@ -127,6 +134,21 @@ namespace Shop_homework15
             return true;
         }
 
+        public ShopWindow GetShopWindowByName(string shopWindowName)
+        {
+            ShopWindow findedShopWindow = null;
+            foreach (var shopWindow in _shopWindows)
+            {
+                if (shopWindow.Name == shopWindowName)
+                {
+                    findedShopWindow = shopWindow;
+                    break;
+                }
+            }
+
+            return findedShopWindow;
+        }
+
         /*
          Отредактировать витрину. 
          При смене объема, если товары уже расположены на витрине
@@ -145,7 +167,7 @@ namespace Shop_homework15
 
             // Проверка суммарного объема витрины
             int occupiedQuantity = GetOccupiedQuantity(id);
-            isValid = isValid && occupiedQuantity > capacity;
+            isValid = isValid && occupiedQuantity < capacity;
 
             if (isValid == false)
                 return false;
