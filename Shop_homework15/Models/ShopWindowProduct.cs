@@ -5,18 +5,18 @@ using System.Text;
 namespace Shop_homework15.Models
 {
     /// <summary>
-    /// Товары на витрине:
+    /// Товар на витрине
     /// </summary>
-    public class ShopWindowProducts
+    public class ShopWindowProduct
     {
         //Идентификатор(порядковый номер, чтобы однозначно идентифицировать товар на витрине)
-        public int ID { get; set; }
+        public Guid ID { get; set; }
 
         //Идентификатор витрины(порядковый номер, чтобы однозначно идентифицировать витрину)
-        public int ShopWindowID { get; set; }
+        public Guid ShopWindowID { get; set; }
 
         //Идентификатор товара(порядковый номер, чтобы однозначно идентифицировать товар)
-        public int ProductID { get; set; }
+        public Guid ProductID { get; set; }
 
         //Кол-во товара - в целом можно и сразу считать объем, если посчитаешь это удобным
         public int ProductQuantity { get; set; }
@@ -24,7 +24,7 @@ namespace Shop_homework15.Models
         // и сразу считать объем
         public int OverallVolume { get; set; }
 
-        // Стоимость товара
-        public decimal Cost { get; set; }
+        // Стоимость товара ( за еденицу товара )
+        public decimal ProductCost { get; set; }
     }
 }

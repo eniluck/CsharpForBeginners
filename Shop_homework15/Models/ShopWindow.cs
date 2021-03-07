@@ -10,7 +10,7 @@ namespace Shop_homework15.Models
     public class ShopWindow
     {
         // Идентификатор (порядковый номер, чтобы однозначно идентифицировать витрину)
-        public int ID { get; set; }
+        public Guid ID { get; set; }
 
         // Название 
         public string Name { get; set; }
