@@ -1,18 +1,16 @@
-﻿using Shop_homework15.Models;
+﻿using Shop_homework15.Interfaces;
+using Shop_homework15.Models;
 using System;
 
 namespace Shop_homework15
 {
     class Program
     {
+        static IShopWindowController shopWindowController;
+
         static void Main(string[] args)
         {
-            /*
-             В программе должен быть интерфейс взаимодействия с пользователем в виде простого консольного меню. 
-             При выполнении операций программа не должна закрываться, для выхода из программы следует сделать отдельную операцию
-            */
-            ShopWindowController shopWindowController = new ShopWindowController();
-
+            shopWindowController = new ShopWindowController();
 
             do
             {
@@ -23,16 +21,16 @@ namespace Shop_homework15
                 switch (userChoice)
                 {
                     case 1:
-                        ShowShopWindow(shopWindowController);
+                        ShowShopWindow();
                         break;
                     case 3:
-                        CreateShopWindow(shopWindowController);
+                        CreateShopWindow();
                         break;
                     case 4:
-                        EditShopWindow(shopWindowController);
+                        EditShopWindow();
                         break;
                     case 5:
-                        DeleteShopWindow(shopWindowController);
+                        DeleteShopWindow();
                         break;
                     case 0:
                         return;
@@ -72,14 +70,15 @@ namespace Shop_homework15
             Console.WriteLine("0. Выйти из программы.");
         }
 
-        //3. Создать новую витрину.
-        private static void CreateShopWindow(ShopWindowController shopWindowController)
+        private static void CreateShopWindow()
         {
             Console.Clear();
             Console.WriteLine("3. Создать новую витрину.");
+            //TODO: Проверка на ввод витрины
             Console.WriteLine("Введите имя витрины: ");
             string shopWindowName = Console.ReadLine();
             Console.WriteLine("Введите объем витрины: ");
+            //TODO: Проверка на ввод объема витрины
             string shopWindowCapacity = Console.ReadLine();
             int capacity;
             bool isInt = Int32.TryParse(shopWindowCapacity, out capacity);
@@ -87,8 +86,7 @@ namespace Shop_homework15
             shopWindowController.CreateShopWindow(shopWindowName, capacity);
         }
 
-        //1. Посмотреть список созданных витрин
-        private static void ShowShopWindow(ShopWindowController shopWindowController)
+        private static void ShowShopWindow()
         {
             Console.Clear();
             Console.WriteLine("1. Посмотреть список созданных витрин");
@@ -104,8 +102,7 @@ namespace Shop_homework15
             Console.ReadLine();
         }
 
-        // 4. Отредактировать витрину
-        private static void EditShopWindow(ShopWindowController shopWindowController)
+        private static void EditShopWindow()
         {
             //1. найти по имени витрину
 
@@ -129,11 +126,7 @@ namespace Shop_homework15
             shopWindowController.EditShopWindow(shopWindowForEdit.ID, newName, newCapacity);
         }
 
-        
-
-
-        //5. Удалить витрину.
-        private static void DeleteShopWindow(ShopWindowController shopWindowController)
+        private static void DeleteShopWindow()
         {
             Console.WriteLine("Введи имя витрины для удаления:");
             string shopWindowName = Console.ReadLine();
@@ -144,7 +137,6 @@ namespace Shop_homework15
                 return;
 
             shopWindowController.DeleteShopWindow(shopWindowForDel);
-
         }
     }
 }

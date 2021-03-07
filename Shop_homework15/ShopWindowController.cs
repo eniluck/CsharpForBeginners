@@ -79,7 +79,7 @@ namespace Shop_homework15
             return totalShopWindowQuantity;
         }
 
-        internal List<ShopWindow> GetShopWindows()
+        public List<ShopWindow> GetShopWindows()
         {
             return _shopWindows;
         }
