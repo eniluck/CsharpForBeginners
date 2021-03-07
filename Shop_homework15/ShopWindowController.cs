@@ -39,7 +39,7 @@ namespace Shop_homework15
             }
 
             //2. сумма из п.1  и productQuantity не должна превышать shopWindow.Capacity
-            //Вопрос: здесь надо выбрасывать exception и в последствии эту ошибку обработать? 
+            //Вопрос: здесь надо выбрасывать exception и в последствии эту ошибку обработать ( как в методе CreateShopWindow ) ? 
             //или просто пометить что проверка не прошла и вернуть false
             if (totalShopWindowQuantity + productQuantity > shopWindow.Capacity)
                 isValid = false;
@@ -48,7 +48,6 @@ namespace Shop_homework15
 
             if (isValid == false)
                 return false;
-
 
             ShopWindowProduct newShopWindowProduct = new ShopWindowProduct()
             {
@@ -64,9 +63,29 @@ namespace Shop_homework15
             return true;
         }
 
-        public ShopWindowController CreateShopWindow(string name, int capacity)
+        /*
+         Создать новую витрину с названием и объемом. Объем - сколько товаров может поместиться, у каждого товара свой объем.
+         */
+        public ShopWindow CreateShopWindow(string name, int capacity)
         {
-            throw new NotImplementedException();
+            bool isValid = true;
+            //Проверка на не пустую строку name
+            if (string.IsNullOrWhiteSpace(name))
+                isValid = false;
+
+            //Проверка на capacity > 0
+            isValid = isValid && capacity > 0;
+
+            if (isValid == false)
+                throw new Exception("Ошибка создания витрины.");
+
+            return new ShopWindow()
+            {
+                ID = Guid.NewGuid(),
+                Name = name,
+                Capacity = capacity,
+                CreateDate = DateTime.Now
+            };
         }
 
         public bool DeleteShopWindow(ShopWindowController shopWindow)
@@ -79,7 +98,7 @@ namespace Shop_homework15
             throw new NotImplementedException();
         }
 
-        public ShopWindowController EditShopWindow(int id, string name, int capacity)
+        public ShopWindow EditShopWindow(int id, string name, int capacity)
         {
             throw new NotImplementedException();
         }
