@@ -131,15 +131,15 @@ namespace Shop_homework15
 
         private void DeleteShopWindow()
         {
-            Console.WriteLine("Введи имя витрины для удаления:");
+            Console.WriteLine("Введите имя витрины для удаления:");
             string shopWindowName = Console.ReadLine();
 
-            ShopWindow shopWindowForDel = _shopWindowController.GetShopWindowByName(shopWindowName);
+            ShopWindow shopWindowToDelete = _shopWindowController.GetShopWindowByName(shopWindowName);
 
-            if (shopWindowForDel == null)
+            if (shopWindowToDelete == null)
                 return;
 
-            _shopWindowController.DeleteShopWindow(shopWindowForDel);
+            _shopWindowController.DeleteShopWindow(shopWindowToDelete);
         }
     }
 }
