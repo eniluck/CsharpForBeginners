@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Shop_homework15.Interfaces
 {
-    interface IShopWindowController
+    public interface IShopWindowController
     {
         ShopWindow CreateShopWindow(string name, int capacity);
         bool EditShopWindow(Guid id, string name, int capacity);
