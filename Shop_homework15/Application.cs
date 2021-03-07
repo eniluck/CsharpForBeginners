@@ -1,8 +1,6 @@
 ﻿using Shop_homework15.Interfaces;
 using Shop_homework15.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Shop_homework15
 {

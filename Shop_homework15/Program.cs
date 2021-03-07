@@ -1,6 +1,4 @@
 ﻿using Shop_homework15.Interfaces;
-using Shop_homework15.Models;
-using System;
 
 namespace Shop_homework15
 {
@@ -12,8 +10,5 @@ namespace Shop_homework15
             Application application = new Application(shopWindowController);
             application.Start();
         }
-
-
-       
     }
 }
