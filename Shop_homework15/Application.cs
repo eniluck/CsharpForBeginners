@@ -19,7 +19,7 @@ namespace Shop_homework15
             {
                 Console.Clear();
                 ShowMenu();
-                int userChoice = GetUserInput();
+                int userChoice = GetMenuNumber();
 
                 switch (userChoice)
                 {
@@ -42,22 +42,48 @@ namespace Shop_homework15
             } while (true);
         }
 
-        private int GetUserInput()
+        private int GetMenuNumber()
         {
-            Console.WriteLine("Выбирите пункт меню: ");
-            string userInput;
-            bool isInt;
             int menuItem;
             do
             {
-                userInput = Console.ReadLine();
-                isInt = Int32.TryParse(userInput, out menuItem);
+                menuItem = GetIntFromUser("Выбирите пункт меню: ");
+            } while (menuItem < 0 || menuItem > 6);
 
-            } while (
-                    (menuItem < 0 || menuItem > 6)
-                    || isInt == false
-            );
             return menuItem;
+        }
+
+        private int GetIntFromUser(string message)
+        {
+            Console.WriteLine("Введите целое число.");
+            Console.WriteLine(message);
+            string userInput;
+            bool isInt;
+            int intValue;
+            do
+            {
+                userInput = Console.ReadLine();
+                isInt = Int32.TryParse(userInput, out intValue);
+                if (isInt == false)
+                    Console.WriteLine("Вы ввели не целое число. Повторите ввод.");
+            } while ( isInt == false );
+            return intValue;
+        }
+
+        private string GetStringFromUser(string message)
+        {
+            Console.WriteLine("Введите не пустую строку.");
+            Console.WriteLine(message);
+            string userInput;
+            do
+            {
+                userInput = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(userInput) == true)
+                    Console.WriteLine("Вы ввели пустую строку. Повторите ввод.");
+
+            } while (string.IsNullOrWhiteSpace(userInput) == true);
+
+            return userInput;
         }
 
         private void ShowMenu()
@@ -77,15 +103,8 @@ namespace Shop_homework15
         {
             Console.Clear();
             Console.WriteLine("3. Создать новую витрину.");
-            //TODO: Проверка на ввод витрины
-            Console.WriteLine("Введите имя витрины: ");
-            string shopWindowName = Console.ReadLine();
-            Console.WriteLine("Введите объем витрины: ");
-            //TODO: Проверка на ввод объема витрины
-            string shopWindowCapacity = Console.ReadLine();
-            int capacity;
-            bool isInt = Int32.TryParse(shopWindowCapacity, out capacity);
-
+            string shopWindowName = GetStringFromUser("Введите имя витрины: ");
+            int capacity = GetIntFromUser("Введите объем витрины: ");
             _shopWindowController.CreateShopWindow(shopWindowName, capacity);
         }
 
@@ -109,8 +128,7 @@ namespace Shop_homework15
         {
             //1. найти по имени витрину
 
-            Console.WriteLine("Введи имя витрины для редактирования:");
-            string shopWindowName = Console.ReadLine();
+            string shopWindowName = GetStringFromUser("Введи имя витрины для редактирования:");
 
             ShopWindow shopWindowForEdit = _shopWindowController.GetShopWindowByName(shopWindowName);
 
@@ -118,22 +136,15 @@ namespace Shop_homework15
                 return;
 
             //2. отредактировать витрину
-            Console.WriteLine("Введите новое имя для витрины:");
-            string newName = Console.ReadLine();
+            string newName = GetStringFromUser("Введите новое имя для витрины:");
 
-            Console.WriteLine("Введите новый объем витрины: ");
-            string shopWindowCapacity = Console.ReadLine();
-            int newCapacity;
-            bool isInt = Int32.TryParse(shopWindowCapacity, out newCapacity);
-
+            int newCapacity = GetIntFromUser("Введите новый объем витрины: ");
             _shopWindowController.EditShopWindow(shopWindowForEdit.ID, newName, newCapacity);
         }
 
         private void DeleteShopWindow()
         {
-            Console.WriteLine("Введите имя витрины для удаления:");
-            string shopWindowName = Console.ReadLine();
-
+            string shopWindowName = GetStringFromUser("Введите имя витрины для удаления:");
             ShopWindow shopWindowToDelete = _shopWindowController.GetShopWindowByName(shopWindowName);
 
             if (shopWindowToDelete == null)
