@@ -37,12 +37,24 @@ namespace Shop_homework15
                     case 5:
                         DeleteShopWindow();
                         break;
+                    case 6:
+                        AddProductoToShopWindow();
+                        break;
                     case 0:
                         return;
                 }
 
             } while (true);
         }
+
+        private void AddProductoToShopWindow()
+        {
+            //Найти витрину по имени.
+            //Найти товар по имени.
+            //Добавить товар в витрину.
+            _shopWindowController.AddProduct();
+        }
+
         private void ShowMenu()
         {
             Console.WriteLine("Добро пожаловать в программу управления Витринами.");
@@ -52,12 +64,15 @@ namespace Shop_homework15
             Console.WriteLine("3. Создать новую витрину.");
             Console.WriteLine("4. Отредактировать витрину.");
             Console.WriteLine("5. Удалить витрину.");
-            Console.WriteLine("6. Добавить товар в витрину.");
+            Console.WriteLine("------- Товары на витрине. -------");
+            Console.WriteLine("6. Посмотреть товары на витрине.");
+            Console.WriteLine("7. Добавить товар в витрину.");
+            Console.WriteLine("8. Убрать товар с витрины.");
             Console.WriteLine("------- Товары -------");
-            Console.WriteLine("7. Просмотреть список товаров");
-            Console.WriteLine("8. Создать товар");
-            Console.WriteLine("9. Редактировать товар");
-            Console.WriteLine("10. Удалить товар");
+            Console.WriteLine("9. Просмотреть список товаров");
+            Console.WriteLine("10. Создать товар");
+            Console.WriteLine("11. Редактировать товар");
+            Console.WriteLine("12. Удалить товар");
             Console.WriteLine("---------------------------");
             Console.WriteLine("0. Выйти из программы.");
         }
@@ -157,7 +172,7 @@ namespace Shop_homework15
             if (shopWindowToDelete == null)
                 return;
 
-            _shopWindowController.DeleteShopWindow(shopWindowToDelete);
+            _shopWindowController.DeleteShopWindow(shopWindowToDelete.ID);
         }
     }
 }
