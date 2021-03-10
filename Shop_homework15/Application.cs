@@ -41,6 +41,24 @@ namespace Shop_homework15
 
             } while (true);
         }
+        private void ShowMenu()
+        {
+            Console.WriteLine("Добро пожаловать в программу управления Витринами.");
+            Console.WriteLine("------- Витрины -------");
+            Console.WriteLine("1. Посмотреть список созданных витрин");
+            Console.WriteLine("2. Посмотреть список товаров в витрине");
+            Console.WriteLine("3. Создать новую витрину.");
+            Console.WriteLine("4. Отредактировать витрину.");
+            Console.WriteLine("5. Удалить витрину.");
+            Console.WriteLine("6. Добавить товар в витрину.");
+            Console.WriteLine("------- Товары -------");
+            Console.WriteLine("7. Просмотреть список товаров");
+            Console.WriteLine("8. Создать товар");
+            Console.WriteLine("9. Редактировать товар");
+            Console.WriteLine("10. Удалить товар");
+            Console.WriteLine("---------------------------");
+            Console.WriteLine("0. Выйти из программы.");
+        }
 
         private int GetMenuNumber()
         {
@@ -84,19 +102,6 @@ namespace Shop_homework15
             } while (string.IsNullOrWhiteSpace(userInput) == true);
 
             return userInput;
-        }
-
-        private void ShowMenu()
-        {
-            Console.WriteLine("Welcome to ВИТРИНЫ.");
-            Console.WriteLine("1. Посмотреть список созданных витрин");
-            Console.WriteLine("2. Посмотреть список товаров в витрине");
-            Console.WriteLine("3. Создать новую витрину.");
-            Console.WriteLine("4. Отредактировать витрину.");
-            Console.WriteLine("5. Удалить витрину.");
-            Console.WriteLine("6. Добавить товар в витрину.");
-            Console.WriteLine("---------------------------");
-            Console.WriteLine("0. Выйти из программы.");
         }
 
         private void CreateShopWindow()
