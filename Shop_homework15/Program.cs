@@ -6,8 +6,9 @@ namespace Shop_homework15
     {
         static void Main(string[] args)
         {
-            IShopWindowController shopWindowController = new ShopWindowController();
-            Application application = new Application(shopWindowController);
+            IProductController productController = new InMemoryProductController();
+            IShopWindowController shopWindowController = new InMemoryShopWindowController(productController);
+            Application application = new Application(shopWindowController, productController);
             application.Start();
         }
     }

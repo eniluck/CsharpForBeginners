@@ -7,10 +7,12 @@ namespace Shop_homework15
     public class Application
     {
         private readonly IShopWindowController _shopWindowController;
+        private readonly IProductController _productController;
 
-        public Application(IShopWindowController shopWindowController)
+        public Application(IShopWindowController shopWindowController, IProductController productController)
         {
             _shopWindowController = shopWindowController;
+            this._productController = productController;
         }
 
         public void Start()
