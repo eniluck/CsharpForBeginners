@@ -2,7 +2,6 @@
 using Shop_homework15.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Shop_homework15
 {
@@ -47,13 +46,12 @@ namespace Shop_homework15
             return newProduct;
         }
 
-
         /// <summary>
         /// Найти продукт по названию.
         /// </summary>
         /// <param name="name">Имя продукта.</param>
         /// <returns>Найденный продукт или null.</returns>
-        private Product FindProductByName(string name)
+        public Product FindProductByName(string name)
         {
             foreach (var product in _products)
             {

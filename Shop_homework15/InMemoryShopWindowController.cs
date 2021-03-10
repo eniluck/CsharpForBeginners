@@ -92,7 +92,6 @@ namespace Shop_homework15
             return newShopWindow;
         }
 
-
         /// <summary>
         /// Проверка параметров для витрины.
         /// </summary>
