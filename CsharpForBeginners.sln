@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsharpForBeginners", "CsharpForBeginners\CsharpForBeginners.csproj", "{5F785172-6D4E-49A1-ADC5-5B8022965CC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CsharpForBeginners", "CsharpForBeginners\CsharpForBeginners.csproj", "{5F785172-6D4E-49A1-ADC5-5B8022965CC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop_homework15", "Shop_homework15\Shop_homework15.csproj", "{6095E82B-2BB1-4F65-8820-EF7349C2A2EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop_homework15", "Shop_homework15\Shop_homework15.csproj", "{6095E82B-2BB1-4F65-8820-EF7349C2A2EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CafeForDevs", "CafeForDevs", "{3B56A8C4-48DD-489E-A41F-B71192DA6DB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafeForDevs.Client", "CafeForDevs\CafeForDevs.Client\CafeForDevs.Client.csproj", "{B4E644BD-7EAA-40B6-858B-D495B1F5C7CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafeForDevs.Server", "CafeForDevs\CafeForDevs.Server\CafeForDevs.Server.csproj", "{1F79F7A0-6DB9-4E83-A16B-A4C80130BC8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +27,21 @@ Global
 		{6095E82B-2BB1-4F65-8820-EF7349C2A2EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6095E82B-2BB1-4F65-8820-EF7349C2A2EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6095E82B-2BB1-4F65-8820-EF7349C2A2EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4E644BD-7EAA-40B6-858B-D495B1F5C7CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4E644BD-7EAA-40B6-858B-D495B1F5C7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4E644BD-7EAA-40B6-858B-D495B1F5C7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4E644BD-7EAA-40B6-858B-D495B1F5C7CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F79F7A0-6DB9-4E83-A16B-A4C80130BC8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F79F7A0-6DB9-4E83-A16B-A4C80130BC8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F79F7A0-6DB9-4E83-A16B-A4C80130BC8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F79F7A0-6DB9-4E83-A16B-A4C80130BC8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B4E644BD-7EAA-40B6-858B-D495B1F5C7CC} = {3B56A8C4-48DD-489E-A41F-B71192DA6DB2}
+		{1F79F7A0-6DB9-4E83-A16B-A4C80130BC8D} = {3B56A8C4-48DD-489E-A41F-B71192DA6DB2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9455F102-2BFE-40CD-AD42-CD6DC054F9D7}
