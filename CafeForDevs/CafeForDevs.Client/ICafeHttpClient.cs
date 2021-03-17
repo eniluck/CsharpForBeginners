@@ -2,8 +2,8 @@
 {
     public interface ICafeHttpClient
     {
-        void GetMenu();
-        void SelectMenuItem();
+        Menu GetMenu();
+        void SelectMenuItem(int menuItemId);
         void GetOrder();
     }
 }
