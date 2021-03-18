@@ -46,6 +46,23 @@ namespace Shop_homework15
         }
 
         /// <summary>
+        /// Получить список продуктов на витрине.
+        /// </summary>
+        /// <param name="ShopWindowID">ID витрины.</param>
+        /// <returns>Список продуктов на витрине.</returns>
+        public List<ShopWindowProduct> GetShopWindowProducts(Guid ShopWindowID)
+        {
+            List<ShopWindowProduct> shopWindowProductsFiltered = new List<ShopWindowProduct>();
+            foreach (var shopWindowProduct in _shopWindowProducts)
+            {
+                if (shopWindowProduct.ShopWindowID == ShopWindowID)
+                    shopWindowProductsFiltered.Add(shopWindowProduct);
+            }
+
+            return shopWindowProductsFiltered;
+        }
+
+        /// <summary>
         /// Получить витрину по ID.
         /// </summary>
         /// <param name="guid">ID витрины.</param>

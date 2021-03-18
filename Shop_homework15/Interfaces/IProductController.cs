@@ -9,7 +9,7 @@ namespace Shop_homework15.Interfaces
     {
         List<Product> GetProducts();
         Product GetProductByID(Guid guid);
-        Product FindProductByName(string name);
+        Product GetProductByName(string name);
         Product CreateProduct(string name, int size);
         bool EditProduct(Guid guid, string name, int size);
         bool DeleteProduct(Guid guid);

@@ -9,6 +9,7 @@ namespace Shop_homework15.Interfaces
         List<ShopWindow> GetShopWindows();
         ShopWindow GetShopWindowByID(Guid guid);
         ShopWindow GetShopWindowByName(string shopWindowName);
+        List<ShopWindowProduct> GetShopWindowProducts(Guid ShopWindowID);
         ShopWindow CreateShopWindow(string name, int capacity);
         bool EditShopWindow(Guid guid, string name, int capacity);
         bool DeleteShopWindow(Guid guid);

@@ -38,7 +38,16 @@ namespace Shop_homework15
                         DeleteShopWindow();
                         break;
                     case 6:
+                        ShowShopWindowProducts();
+                        break;
+                    case 7:
                         AddProductoToShopWindow();
+                        break;
+                    case 9:
+                        ShowProducts();
+                        break;
+                    case 10:
+                        CreateProduct();
                         break;
                     case 0:
                         return;
@@ -47,12 +56,64 @@ namespace Shop_homework15
             } while (true);
         }
 
+        private void ShowProducts()
+        {
+            Console.Clear();
+            Console.WriteLine("Список всех продуктов:");
+            foreach (var product in _productController.GetProducts())
+            {
+                Console.WriteLine(product.GetInfo());
+            }
+            
+            Console.WriteLine("Нажмите любую клавишу для продолжения.");
+            Console.ReadKey();
+        }
+
+        private void CreateProduct()
+        {
+            string name = GetStringFromUser("Введите имя товара: ");
+            int size = GetIntFromUser("Введите резмер товара:");
+
+            _productController.CreateProduct(name, size);
+        }
+
+        private void ShowShopWindowProducts()
+        {
+            foreach (var shopWindow in _shopWindowController.GetShopWindows())
+            {
+                Console.WriteLine(shopWindow.Name);
+
+                foreach (var shopWindowProduct in _shopWindowController.GetShopWindowProducts(shopWindow.ID))
+                {
+                    Product product = _productController.GetProductByID(shopWindowProduct.ProductID);
+                    Console.WriteLine(product.Name);
+                }
+            } 
+        }
+
         private void AddProductoToShopWindow()
         {
             //Найти витрину по имени.
+            string shopWindowName = GetStringFromUser("Введи имя витрины для добавления товара:");
+            ShopWindow shopWindowFound = _shopWindowController.GetShopWindowByName(shopWindowName);
+
+            if (shopWindowFound == null)
+                return;
+
             //Найти товар по имени.
+            string productName = GetStringFromUser("Введи имя товара который будет помещён на витрину:");
+            Product productFound = _productController.GetProductByName(productName);
+
+            if (productFound == null)
+                return;
+
+            //Спросить стоимость и количество 
+            int productCost = GetIntFromUser("Укажите стоимость товара.");
+            int productQuantity = GetIntFromUser("Укажите количество товара.");
+
+
             //Добавить товар в витрину.
-            _shopWindowController.AddProduct();
+            _shopWindowController.AddProduct(shopWindowFound.ID, productFound.ID, productCost, productQuantity);
         }
 
         private void ShowMenu()
@@ -83,7 +144,7 @@ namespace Shop_homework15
             do
             {
                 menuItem = GetIntFromUser("Выбирите пункт меню: ");
-            } while (menuItem < 0 || menuItem > 6);
+            } while (menuItem < 0 || menuItem > 13);
 
             return menuItem;
         }

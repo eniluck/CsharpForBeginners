@@ -51,7 +51,7 @@ namespace Shop_homework15
         /// </summary>
         /// <param name="name">Имя продукта.</param>
         /// <returns>Найденный продукт или null.</returns>
-        public Product FindProductByName(string name)
+        public Product GetProductByName(string name)
         {
             foreach (var product in _products)
             {

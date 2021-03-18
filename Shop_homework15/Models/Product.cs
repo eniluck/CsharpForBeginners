@@ -15,5 +15,10 @@ namespace Shop_homework15.Models
 
         //Занимаемый объем
         public int Size{ get; set; }
+
+        public string GetInfo()
+        {
+            return $"{ID} {Name} {Size}"; 
+        }
     }
 }
