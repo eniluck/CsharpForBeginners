@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 
 namespace CafeForDevs.Client
@@ -64,13 +65,15 @@ namespace CafeForDevs.Client
 
         internal void PrintOrder()
         {
-            _cafeHttpClient.GetOrder();
+            var order = _cafeHttpClient.GetOrder();
+
+            foreach (var position in order.Positions)
+            {
+                Console.WriteLine($"{position.Name} - {position.Price} * {position.Quantity} = {position.Sum}");
+            }
+
+            var orderTotal = order.Positions.Sum(x => x.Sum);
+            Console.WriteLine($"Сумма вашего заказа: {orderTotal}");
         }
-    }
-
-
-    public class Order
-    {
-
     }
 }

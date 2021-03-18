@@ -29,9 +29,13 @@ namespace CafeForDevs.Client
             var response = _client.PostAsync("http://localhost:32560", content);
         }
 
-        public void GetOrder()
+        public Order GetOrder()
         {
             var response = _client.GetAsync("http://localhost:32560");
+
+            // Формируем меню из ответа сервера
+
+            return new Order();
         }
     }
 }

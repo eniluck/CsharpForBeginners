@@ -4,6 +4,6 @@
     {
         Menu GetMenu();
         void SelectMenuItem(int menuItemId);
-        void GetOrder();
+        Order GetOrder();
     }
 }
