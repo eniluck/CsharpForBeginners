@@ -1,4 +1,6 @@
-﻿namespace CafeForDevs.Client
+﻿using CafeForDevs.Models;
+
+namespace CafeForDevs.Client
 {
     public interface ICafeHttpClient
     {

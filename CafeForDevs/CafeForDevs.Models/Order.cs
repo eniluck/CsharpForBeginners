@@ -1,4 +1,4 @@
-﻿namespace CafeForDevs.Client
+﻿namespace CafeForDevs.Models
 {
     public class Order
     {

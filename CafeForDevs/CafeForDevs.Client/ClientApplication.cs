@@ -75,5 +75,7 @@ namespace CafeForDevs.Client
             var orderTotal = order.Positions.Sum(x => x.Sum);
             Console.WriteLine($"Сумма вашего заказа: {orderTotal}");
         }
+
+        //TODO: добавить пункт меню оплатить заказ
     }
 }

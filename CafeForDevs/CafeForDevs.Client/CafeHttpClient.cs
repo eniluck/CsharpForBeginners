@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CafeForDevs.Models;
+using System;
 using System.Net.Http;
 
 namespace CafeForDevs.Client
@@ -15,7 +16,7 @@ namespace CafeForDevs.Client
 
         public Menu GetMenu()
         {
-            var response = _client.GetAsync("http://localhost:32560");
+            var response = _client.GetAsync("menu");
 
             // Формируем меню из ответа сервера
 
@@ -26,12 +27,12 @@ namespace CafeForDevs.Client
         {
             var content = menuItemId;
 
-            var response = _client.PostAsync("http://localhost:32560", content);
+            var response = _client.PostAsync("order", content);
         }
 
         public Order GetOrder()
         {
-            var response = _client.GetAsync("http://localhost:32560");
+            var response = _client.GetAsync("order");
 
             // Формируем меню из ответа сервера
 

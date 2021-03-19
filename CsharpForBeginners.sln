@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop_homework15", "Shop_hom
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CafeForDevs", "CafeForDevs", "{3B56A8C4-48DD-489E-A41F-B71192DA6DB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafeForDevs.Client", "CafeForDevs\CafeForDevs.Client\CafeForDevs.Client.csproj", "{B4E644BD-7EAA-40B6-858B-D495B1F5C7CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CafeForDevs.Client", "CafeForDevs\CafeForDevs.Client\CafeForDevs.Client.csproj", "{B4E644BD-7EAA-40B6-858B-D495B1F5C7CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafeForDevs.Server", "CafeForDevs\CafeForDevs.Server\CafeForDevs.Server.csproj", "{1F79F7A0-6DB9-4E83-A16B-A4C80130BC8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CafeForDevs.Server", "CafeForDevs\CafeForDevs.Server\CafeForDevs.Server.csproj", "{1F79F7A0-6DB9-4E83-A16B-A4C80130BC8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafeForDevs.Models", "CafeForDevs\CafeForDevs.Models\CafeForDevs.Models.csproj", "{90550A93-D359-4793-A013-8C5938588662}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{1F79F7A0-6DB9-4E83-A16B-A4C80130BC8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F79F7A0-6DB9-4E83-A16B-A4C80130BC8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F79F7A0-6DB9-4E83-A16B-A4C80130BC8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90550A93-D359-4793-A013-8C5938588662}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90550A93-D359-4793-A013-8C5938588662}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90550A93-D359-4793-A013-8C5938588662}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90550A93-D359-4793-A013-8C5938588662}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +48,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B4E644BD-7EAA-40B6-858B-D495B1F5C7CC} = {3B56A8C4-48DD-489E-A41F-B71192DA6DB2}
 		{1F79F7A0-6DB9-4E83-A16B-A4C80130BC8D} = {3B56A8C4-48DD-489E-A41F-B71192DA6DB2}
+		{90550A93-D359-4793-A013-8C5938588662} = {3B56A8C4-48DD-489E-A41F-B71192DA6DB2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9455F102-2BFE-40CD-AD42-CD6DC054F9D7}
