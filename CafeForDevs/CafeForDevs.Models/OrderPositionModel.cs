@@ -1,6 +1,6 @@
 ﻿namespace CafeForDevs.Models
 {
-    public class OrderPosition
+    public class OrderPositionModel
     {
         public string Name { get; set; }
         public decimal Price { get; set; }

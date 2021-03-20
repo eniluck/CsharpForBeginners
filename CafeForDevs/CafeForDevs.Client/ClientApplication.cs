@@ -32,9 +32,15 @@ namespace CafeForDevs.Client
 
                 switch (userAnswer)
                 {
-                    case "1": break;
-                    case "2": break;
-                    case "3": break;
+                    case "1": 
+                        PrintMenu(); 
+                        break;
+                    case "2":
+                        SelectMenuItem();
+                        break;
+                    case "3":
+                        PrintOrder();
+                        break;
                 }
 
                 Console.WriteLine("Будем продолжать? (y/n)");
@@ -60,7 +66,11 @@ namespace CafeForDevs.Client
             var userAnswer = Console.ReadLine();
             var menuItemId = int.Parse(userAnswer);
 
-            _cafeHttpClient.SelectMenuItem(menuItemId);
+            Console.WriteLine("Введите желаемое количество.");
+            userAnswer = Console.ReadLine();
+            var quantity = int.Parse(userAnswer);
+
+            _cafeHttpClient.SelectMenuItem(menuItemId,quantity);
         }
 
         internal void PrintOrder()

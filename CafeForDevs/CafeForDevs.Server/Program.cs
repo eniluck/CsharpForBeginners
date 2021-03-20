@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CafeForDevs.Server.Handlers;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Net;
 
 namespace CafeForDevs.Server
@@ -7,10 +10,24 @@ namespace CafeForDevs.Server
     {
         private static void Main(string[] args)
         {
-            var httpListener = new HttpListener();
-            httpListener.Prefixes.Add("http://localhost:65465");
+            var baseUrl = new Uri( "http://localhost:65465/");
 
-            var application = new ServerApplication(httpListener);
+            var httpListener = new HttpListener();
+            httpListener.Prefixes.Add(baseUrl.ToString());
+
+            var handlers = new List<IHandler>();
+            handlers.Add(new MenuHandler());
+            handlers.Add(new OrderHandler());
+
+            foreach (var handler in handlers)
+            {
+                var handlerUrl = new Uri(baseUrl, handler.Path + "/");
+                httpListener.Prefixes.Add(handlerUrl.ToString());
+            }
+
+            var router = new Router(handlers);
+
+            var application = new ServerApplication(httpListener, router);
             application.Start();
         }
     }

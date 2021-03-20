@@ -4,8 +4,8 @@ namespace CafeForDevs.Client
 {
     public interface ICafeHttpClient
     {
-        Menu GetMenu();
-        void SelectMenuItem(int menuItemId);
-        Order GetOrder();
+        MenuModel GetMenu();
+        void SelectMenuItem(int menuItemId,int quantity);
+        OrderModel GetOrder();
     }
 }
